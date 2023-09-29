@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-button expand="full" (click)="takePicture()">Take Picture</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let image of capturedImage; let i = index">
+      <ion-thumbnail slot="start" class="image-container">
+        <ion-img [src]="image" class="captured-image"></ion-img>
+        <ion-icon
+          name="close"
+          class="delete-icon"
+          (click)="deletePicture(i)"
+        ></ion-icon>
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
+    <ion-button expand="full" (click)="getGeolocation()">Get Geolocation</ion-button>
+    <div *ngIf="currentPosition">
+      <p>Latitude: {{ currentPosition.coords.latitude }}</p>
+      <p>Longitude: {{ currentPosition.coords.longitude }}</p>
+    </div>
+  </ion-content>
